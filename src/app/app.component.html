@@ -1,20 +1,161 @@
-<!--The content below is only a placeholder and can be replaced.-->
+ <!-- <h1>
+  {{title}} <i class="fa fa-check"></i>
+</h1> -->
+  <!--The content below is only a placeholder and can be replaced.-->
+
+<p-panel >
+    <p-header>
+    <p-menubar [model]="items1">
+    <input type="text" pInputText placeholder="Search">
+    <button pButton label="Logout" icon="fa-sign-out"></button>
+    </p-menubar> 
+    </p-header>
+    <!-- Add  Add New Item To Inventory Starts -->
+    <p-dialog header="Add New Item To Inventory" [(visible)]="displayAdd" [width]="830" [responsive]="true" showEffect="fade" [modal]="true">
+    <p-growl [value]="msgs"  life="5000" ></p-growl>
+
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <!-- <p-panel header="Validate"> -->
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    First Name *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="firstname" placeholder="Required"/>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['firstname'].valid&&userform.controls['firstname'].dirty">
+                        <i class="fa fa-close"></i>
+                        Firstname is required
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Last Name *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="lastname" placeholder="Required"/>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['lastname'].valid&&userform.controls['lastname'].dirty">
+                        <i class="fa fa-close"></i>
+                        Lastname is required
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Password *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="password" formControlName="password" placeholder="Required - Min(6)"/>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['password'].valid&&userform.controls['password'].dirty">
+                        <i class="fa fa-close"></i>
+                        <span *ngIf="userform.controls['password'].errors['required']">Password is required</span>
+                        <span *ngIf="userform.controls['password'].errors['minlength']">Must be longer than 6 characters</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Description:
+                </div>
+                <div class="ui-grid-col-6">
+                    <textarea pInputTextarea type="text" formControlName="description"></textarea>
+                </div>
+                <div class="ui-grid-col-4"></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Gender *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <p-dropdown [options]="genders" formControlName="gender" [autoWidth]="false"></p-dropdown>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['gender'].valid&&userform.controls['gender'].dirty">
+                        <i class="fa fa-close"></i>
+                        Gender is required
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2"></div>
+                <div class="ui-grid-col-6">
+                    <button pButton type="submit" label="Submit" [disabled]="!userform.valid"></button>
+                </div>
+                <div class="ui-grid-col-4"></div>
+            </div>
+            <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+                Form Submitted
+                <br>
+                {{diagnostic}}
+            </div>
+        </div>
+    <!-- </p-panel> -->
+</form>
+   </p-dialog>
+<!-- Add New Item To Inventory Ends -->
+<!-- Update Item From Inventory Starts -->
+<p-dialog header="Update Item From Inventory" [(visible)]="displayUpdate" [width]="830" [responsive]="true" showEffect="fade" [modal]="true">
+</p-dialog>
+<!-- Update Item From Inventory Ends -->
+<!-- Delete Item From Inventory Starts -->
+<p-dialog header="Delete Item From Inventory" [(visible)]="displayDelete" [width]="830" [responsive]="true" showEffect="fade" [modal]="true">
+</p-dialog>
+<!-- Delete Item From Inventory Ends -->
+<!-- Show All Items From Inventory Starts -->
+<p-dialog header="Show All Items From Inventory" [(visible)]="displayAll" [width]="830" [responsive]="true" showEffect="fade" [modal]="true">
+</p-dialog>
+<!-- Show All Items From Inventory Ends -->
+  <!-- <button type="text" (click)="showAddDialog()" pButton icon="fa-external-link-square" label="Add"></button>
+  <button type="text" (click)="showUpdateDialog()" pButton icon="fa-external-link-square" label="Update"></button>
+  <button type="text" (click)="showDeleteDialog()" pButton icon="fa-external-link-square" label="Delete"></button>
+  <button type="text" (click)="showAllDialog()" pButton icon="fa-external-link-square" label="Show All"></button> -->
+  
 <div style="text-align:center">
   <h1>
-    Welcome to {{title}}!
+    Welcome to {{title}}! of Angular 5 With PRIMENG
   </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <h2>Key Points</h2>
+  <h3> npm install primeng --save </h3>
+  <h3>npm install @angular/animations --save</h3>
+  <h3>In Project.json include these in Dependency section-: <br> "primeng": "^4.1.0",
+  "font-awesome": "^4.7.0" </h3>
+  <h3>
+    Include these in angular-cli.json styles section-: <br>
+    "styles": [
+  "../node_modules/font-awesome/css/font-awesome.min.css",
+  "../node_modules/primeng/resources/themes/omega/theme.css",
+  "../node_modules/primeng/resources/primeng.min.css",
+  //...
+],
+  </h3>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+  
+    <p-footer>
+       Copyright © 2017 <b>DotNet Techy</b> YouTube Channel-(One Place to learn everything about Angular 2,4,5 along WEBAPI(RestFull) and Microsoft Dot Net Technology)
+    </p-footer>
+</p-panel>
 
+
+<!-- <p-menubar [model]="items1"></p-menubar> -->
+
+
+<!-- <p-menu [model]="items"></p-menu> -->
+
+  <!-- <p-accordion>
+    <p-accordionTab header="Header 1">
+       Content 1
+    </p-accordionTab>
+    <p-accordionTab header="Header 2">
+        Content 2
+    </p-accordionTab>
+    <p-accordionTab header="Header 3">
+        Content 3    
+    </p-accordionTab>
+</p-accordion> -->

@@ -1,5 +1,17 @@
 # Angular5WithPrimeNG
 
+If you prefer to watch video here is the link of all the applications:
+
+Inventory Management System in Angular Web API
+Vendor Management System in Angular Web API
+Order Management System in Angular Web API
+
+https://youtu.be/fok5MpCBXHw
+
+https://youtu.be/pNjT6j9Ix5Y
+
+https://youtu.be/b1TeALlGw_I
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
 ## Development server
